@@ -1,0 +1,16 @@
+.dm-sans-<uniquifier> {
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.navbar ul{
+  list-style-type: none;
+  padding-top: 60px;
+  margin: 0px;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+

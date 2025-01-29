@@ -1,0 +1,113 @@
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+</head>
+<div>
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            opacity: 0;
+            animation: fadeIn 0.75s 0.25s forwards;    
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .content-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+        .gif {
+            padding-top: 180px;
+            width: 185px;
+            height: auto;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            font-size: 30px;
+            letter-spacing: -1.4px;
+            padding-top: 180px;
+        }
+        .normal{
+            font-family: 'DM Sans', sans-serif;
+            font-weight;
+            font-size: 48px;
+            letter-spacing: -1.2px;
+            list-style-type: none;
+        }
+        .navbar {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            letter-spacing: -1.8px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 50px;
+        }
+        .navbar a:hover {
+            text-decoration: underline overline;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-bottom: 40px;
+            border-bottom: 3px solid #000000;
+        }
+        .header a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .title{
+            font: Georgia;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    </style>
+
+<! -- header -->
+
+    <div class="header">
+        <span class="normal">
+            <a href="index.html">
+                ethan miller
+            </a>
+        </span>
+        <div class="navbar">
+            <a href="about.html">about</a>
+            <a href="projects.html">projects</a>
+            <a href="ethanmiller_csresume.pdf" download>resume</a>
+        </div>
+    </div>
+</div>
+
+<! -- header -->
+
+
+<div class="content-container">
+    <div class="content">
+        hello. i'm ethan:<br>
+        coder, musician,<br>
+        game developer, <br>
+        cinephile, gamer, <br>
+        and storyteller.
+    </div>
+    <img src="square.gif" alt="literally me" class="gif">
+</div>
+</html>
