@@ -125,24 +125,30 @@
     fetch("ascii/frame1.txt")
         .then(response => response.text())
         .then(text => {
-
             let correctText = text.split('');
             let displayText = Array(correctText.length).fill(' ');
             let index = 0; 
 
             function cycleCharacter() {
                 if (index >= correctText.length) {
-                    return; 
+                    return;
                 }
 
-                displayText[index] = getRandomCharacter();
-                document.getElementById("ascii-box").textContent = displayText.join('');
+                let attempts = 0;
+                let currentCharacter = displayText[index];
+                while (currentCharacter !== correctText[index] && attempts < 5) {
+                    displayText[index] = getRandomCharacter();
+                    document.getElementById("ascii-box").textContent = displayText.join('');
+                    attempts++;
+                    currentCharacter = displayText[index];
+                }
 
-                setTimeout(() => {
-                    if (displayText[index] === correctText[index]) {
-                        index++;
-                    }
-                }, 50);
+                if (currentCharacter !== correctText[index]) {
+                    displayText[index] = correctText[index];
+                    document.getElementById("ascii-box").textContent = displayText.join('');
+                }
+
+                index++;
             }
 
             function getRandomCharacter() {
@@ -151,10 +157,10 @@
             }
 
             const interval = setInterval(cycleCharacter, 100);
-
         })
         .catch(error => console.error("Couldn't load:", error));
 </script>
+
 
 </div>
 </html>
