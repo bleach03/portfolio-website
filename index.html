@@ -25,8 +25,8 @@
             line-height: 1;
             letter-spacing: 0;
             overflow: hidden;
-            width: 190px;
-            height: 190px;
+            width: 191px;
+            height: 191px;
             font-size: 3.2px;
             color: gray;
             padding-top: 10px;
@@ -130,8 +130,11 @@
             let displayText = Array(correctText.length).fill(' ');
             let index = 0; 
 
+            let interval;
+
             function cycleCharacter() {
                 if (index >= correctText.length) {
+                    clearInterval(interval);
                     return;
                 }
 
@@ -157,10 +160,11 @@
                 return chars[Math.floor(Math.random() * chars.length)];
             }
 
-            const interval = setInterval(cycleCharacter, 1);
+            interval = setInterval(cycleCharacter, 100);
         })
         .catch(error => console.error("Couldn't load:", error));
 </script>
+
 
 
 </div>
