@@ -118,14 +118,33 @@
         cinephile, gamer, <br>
         and storyteller.
     </div>
+    
     <pre id="ascii-box"></pre>
 
 <script>
     fetch("ascii/frame1.txt")
         .then(response => response.text())
-        .then(text => document.getElementById("ascii-box").textContent = text)
+        .then(text => {
+            let randomizedText = randomizeText(text);
+
+            document.getElementById("ascii-box").textContent = randomizedText;
+
+            setTimeout(() => {
+                document.getElementById("ascii-box").textContent = text;
+            }, 2000);
+        })
         .catch(error => console.error("Couldn't load:", error));
+
+    function randomizeText(text) {
+        let textArray = text.split('');
+        for (let i = textArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [textArray[i], textArray[j]] = [textArray[j], textArray[i]];
+        }
+        return textArray.join('');
+    }
 </script>
+
 
 
 </div>
