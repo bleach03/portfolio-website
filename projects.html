@@ -3,6 +3,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <div>
     <style>
@@ -21,21 +22,47 @@
         }
         .content-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 100px;
+            width: 600px;
             padding-top: 60px;
+            margin: auto;
+            flex-direction: column;
         }
         .content-container2 {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding-top: 60px;
+            width: 600px;
+            gap: 14px;
+            margin: auto;
 
-    
         }
         .content-container2 a {
             text-decoration: none;
             color: inherit;
+        }
+        .image-container {
+            width: 600px;
+            margin: 0;
+            padding-top: 40px;
+            padding-bottom: 100px;
+            box-sizing: border-box;
+
+        }
+        .swiper{
+            width: 100%;
+            height: fit-content;
+        }
+        .swiper-slide img{
+            width: 100%;
+
+        }
+        .swiper-button-next{
+            color: ghostwhite;
+        }
+        .swiper-button-prev{
+            color: ghostwhite;
         }
         .gif {
             padding-top: 180px;
@@ -45,19 +72,22 @@
         .content {
             display: flex;
             justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            text-align: center;
-            font-size: 20px;
+            text-align: left;
+            font-size: 18px;
             letter-spacing: -1.4px;
         }
-        .ti {
+        .name {
             display: flex;
             justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            text-align: center;
-            font-size: 48px;
+            text-align: left;
+            font-size: 28px;
             letter-spacing: -1.4px;
-            font-style: italic;
+            font-weight: 500;
+            width: 100%;
         }
         .normal{
             font-family: 'DM Sans', sans-serif;
@@ -70,9 +100,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            font-size: 20px;
-            letter-spacing: -1.4px;
+            text-align: left;
+            font-size: 18px;
+            letter-spacing: -0.69px;
         }
         .navbar {
             font-family: 'DM Sans', sans-serif;
@@ -95,13 +125,13 @@
             padding-left: 80px;
             padding-right: 80px;
             padding-bottom: 40px;
-            border-bottom: 3px solid #000000;
+            /*border-bottom: 3px solid #000000;*/
         }
-        .ti a {
+        .name a {
             text-decoration: none;
             color: inherit;
         }
-        .ti a:hover {
+        .name a:hover {
             text-decoration: underline overline;
         }
         .header a {
@@ -134,34 +164,51 @@
 <! -- header -->
 
 <div class="content-container">
-    <div class="ti">
+    <div class="name">
         <a href="https://lightbulbgamesofficial.itch.io/youre-out">You're Out!</a>
     </div>
     <div class="content">
-        January 2025<br>
+        December 2024 &nbsp  &#151 &nbsp January 2025<br>
     </div>
 </div>
 <div class ="content-container2">
     <div class="description">
-        After several complaints from tenants and upper management, you get a phone<br>
-        call from the board; You're out. Naturally, you get mad. That's when you decide<br>to wreak havoc and kick out every last tenant in the building.<br>
-        Of course, no one likes that, and people are calling the cops on you, so be fast<br>
+        After several complaints from tenants and upper management, you get a phone 
+        call from the board; You're out. Naturally, you get mad. That's when you decide to wreak havoc and kick out every last tenant in the building.
+        Of course, no one likes that, and people are calling the cops on you, so be fast
         and finish the work day! There's a single mother of two out there to evict!
+        This game was made in 1 week for the Beginner's Jam Winter 2024, placing 3rd.
+        Play as an evil Landlord in this parody typing game, and evict as many
+        tenants from your apartment as possible. This game was made using the Godot engine for scripting, Aseprite for 2D modeling, Blender and Crocotile for 3D modeling, and Logic for sounds. Click 'You're Out!' to see the itch.io page and play. 
     </div>
-    <div class="description">
-        This game was made in 1 week for the Beginner's Jam Winter 2024, placing 3rd.<br>
-        Play as an evil Landlord in this funny/parody typing game, and evict as many<br>
-        tenants from your apartment as possible!<br>
-    </div>
-    <div class="description">
-        Process: My team and I coded this in Godot. I led the creative direction and<br>
-        created models/textures as well. I wanted to create a game that had a speedrunning<br>
-        component, because I really like speedrunning, so my team and I settled on a <br>
-        TypeRacer inspired game. However, I did wanted to mix the functionality of a 3D <br>
-        game, so we decided to add a maze component. We are still working on the game, and <br> are working on adding a horror aspect. Essentially, we set out to create an <br>
-        interesting almagamation of what we love in games. 
+<div class ="image-container">
+
+    <div class="swiper">
+
+    <div class="swiper-wrapper">
+
+    <div class="swiper-slide"><img src="you're_out/1.png"></div>
+    <div class="swiper-slide"><img src="you're_out/2.png"></div>
+    <div class="swiper-slide"><img src="you're_out/3.png"></div>
+    <div class="swiper-slide"><img src="you're_out/4.png"></div>
+    <div class="swiper-slide"><img src="you're_out/5.png"></div>
     </div>
 
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
 </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+  });
+</script>
 </div>
 </html>
