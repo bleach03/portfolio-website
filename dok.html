@@ -30,12 +30,12 @@
         }
         .content-container2 {
             display: flex;
-            justify-content: center;
             flex-direction: column;
+            justify-content: center;
             padding-top: 60px;
             width: 600px;
+            gap: 14px;
             margin: auto;
-            background-color: gray;
 
         }
         .content-container2 a {
@@ -49,6 +49,20 @@
             padding-bottom: 100px;
             box-sizing: border-box;
 
+        }
+        .swiper{
+            width: 100%;
+            height: fit-content;
+        }
+        .swiper-slide img{
+            width: 100%;
+
+        }
+        .swiper-button-next{
+            color: ghostwhite;
+        }
+        .swiper-button-prev{
+            color: ghostwhite;
         }
         .gif {
             padding-top: 180px;
@@ -149,11 +163,51 @@
 
 <! -- header -->
 
-<div class="content-container2">
+<div class="content-container">
     <div class="name">
-        <a href="urout.html">You're Out!</a>
-    <div class="name">
-        <a href="dok.html">Dread of Knight</a>
+        <a href="https://lightbulbgamesofficial.itch.io/youre-out">Dread of Knight</a>
     </div>
+    <div class="content">
+        November 2023 &nbsp  &#151 &nbsp December 2023<br>
+    </div>
+</div>
+<div class ="content-container2">
+    <div class="description">
+        After several complaints from tenants and upper management, you get a phone 
+        call from the board; You're out. Naturally, you get mad. That's when you decide to wreak havoc and kick out every last tenant in the building.
+        Of course, no one likes that, and people are calling the cops on you, so be fast
+        and finish the work day! There's a single mother of two out there to evict!
+        This game was made in 1 week for the Beginner's Jam Winter 2024, placing 3rd.
+        Play as an evil Landlord in this parody typing game, and evict as many
+        tenants from your apartment as possible. This game was made using the Godot engine for scripting, Aseprite for 2D modeling, Blender and Crocotile for 3D modeling, and Logic for sounds. Click 'You're Out!' to see the itch.io page and play. 
+    </div>
+<div class ="image-container">
+
+    <div class="swiper">
+
+    <div class="swiper-wrapper">
+
+    <div class="swiper-slide"><img src="dok/1.png"></div>
+    <div class="swiper-slide"><img src="dok/2.png"></div>
+    <div class="swiper-slide"><img src="dok/3.png"></div>
+    <div class="swiper-slide"><img src="dok/4.png"></div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+  });
+</script>
 </div>
 </html>
