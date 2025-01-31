@@ -128,34 +128,43 @@
         .then(text => {
             let correctText = text.split('');
             let displayText = Array(correctText.length).fill(' ');
-            let totalTime = 3000; 
-            let timePerCharacter = totalTime / correctText.length;
+            let index = 0; 
 
-            for (let i = 0; i < correctText.length; i++) {
-                displayText[i] = getRandomCharacter();
+            let interval;
+
+            function cycleCharacter() {
+                if (index >= correctText.length) {
+                    clearInterval(interval);
+                    return;
+                }
+
+                let attempts = 0;
+                let currentCharacter = displayText[index];
+                while (currentCharacter !== correctText[index] && attempts < 5) {
+                    displayText[index] = getRandomCharacter();
+                    document.getElementById("ascii-box").textContent = displayText.join('');
+                    attempts++;
+                    currentCharacter = displayText[index];
+                }
+
+                if (currentCharacter !== correctText[index]) {
+                    displayText[index] = correctText[index];
+                    document.getElementById("ascii-box").textContent = displayText.join('');
+                }
+
+                index++;
             }
 
-            document.getElementById("ascii-box").textContent = displayText.join('');
+            function getRandomCharacter() {
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+                return chars[Math.floor(Math.random() * chars.length)];
+            }
 
-            correctText.forEach((correctChar, index) => {
-                let revealTime = Math.random() * timePerCharacter;
-
-                setTimeout(() => {
-                    displayText[index] = correctChar;
-                    document.getElementById("ascii-box").textContent = displayText.join('');
-                }, revealTime);
-            });
+            interval = setInterval(cycleCharacter, 100);
+            interval = setInterval(cycleCharacter, .1);
         })
         .catch(error => console.error("Couldn't load:", error));
-
-    function getRandomCharacter() {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
-        return chars[Math.floor(Math.random() * chars.length)];
-    }
 </script>
-
-
-
 
 </div>
 </html>
