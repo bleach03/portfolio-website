@@ -160,7 +160,7 @@
                 return chars[Math.floor(Math.random() * chars.length)];
             }
 
-            interval = setInterval(cycleCharacter, 100);
+            interval = setInterval(cycleCharacter, .1);
         })
         .catch(error => console.error("Couldn't load:", error));
 </script>
