@@ -1,0 +1,157 @@
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeIn 0.75s 0.25s forwards;    
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 80px;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+        }
+        .normal {
+            font-size: 48px;
+            letter-spacing: -1.2px;
+            font-weight: 500;
+            margin: 0;
+        }
+        .navbar {
+            display: flex;
+            gap: 50px;
+            font-size: 24px;
+            letter-spacing: -1.8px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .navbar a:hover {
+            text-decoration: underline overline;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cards-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 40px;
+            padding: 60px 80px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .project-card {
+            flex: 0 0 400px;
+            scroll-snap-align: start;
+            border: 2px solid #000;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .card-image {
+            width: 100%;
+            height: 300px;
+            background: #f0f0f0;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 24px;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+        .description {
+            font-size: 18px;
+            letter-spacing: -0.69px;
+            margin: 0;
+        }
+
+        overflow-x: hidden;
+
+        .container-class::-webkit-scrollbar {
+            display: none; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span class="normal">
+            <a href="/">
+                ethan miller
+            </a>
+        </span>
+        <div class="navbar">
+            <a href="/about/">about</a>
+            <a href="/projects/">projects</a>
+            <a href="/ethanmiller_csresume.pdf" download>resume</a>
+        </div>
+    </div>
+</div>
+
+    <div class="cards-container">
+        <!-- You're Out! Card -->
+        <a href="/projects/youre_out" class="project-card">
+            <img src="/projects/youre_out_img.png" class="card-image" alt="You're Out! Project">
+            <div class="card-content">
+                <h3 class="card-title">You're Out!</h3>
+                <p class="description">speedrun typing parody game</p>
+            </div>
+        </a>
+
+        <!-- Dread of Knight Card -->
+        <a href="/projects/dok" class="project-card">
+            <img src="/projects/dok_img.png" class="card-image" alt="Dread of Knight Project">
+            <div class="card-content">
+                <h3 class="card-title">Dread of Knight</h3>
+                <p class="description">medieval maze adventure game</p>
+            </div>
+        </a>
+
+        <a href="#" class="project-card">
+            <img src="https://placehold.co/600x300" class="card-image" alt="Project 3">
+            <div class="card-content">
+                <h3 class="card-title">Project Title</h3>
+                <p class="description">Project description text</p>
+            </div>
+        </a>
+
+        <a href="#" class="project-card">
+            <img src="https://placehold.co/600x300" class="card-image" alt="Project 4">
+            <div class="card-content">
+                <h3 class="card-title">Project Title</h3>
+                <p class="description">Project description text</p>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

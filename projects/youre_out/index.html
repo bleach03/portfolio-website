@@ -1,0 +1,214 @@
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<div>
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            opacity: 0;
+            animation: fadeIn 0.75s 0.25s forwards;    
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .content-container {
+            display: flex;
+            justify-content: center;
+            width: 600px;
+            padding-top: 60px;
+            margin: auto;
+            flex-direction: column;
+        }
+        .content-container2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 60px;
+            width: 600px;
+            gap: 14px;
+            margin: auto;
+
+        }
+        .content-container2 a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .image-container {
+            width: 600px;
+            margin: 0;
+            padding-top: 40px;
+            padding-bottom: 100px;
+            box-sizing: border-box;
+
+        }
+        .swiper{
+            width: 100%;
+            height: fit-content;
+        }
+        .swiper-slide img{
+            width: 100%;
+
+        }
+        .swiper-button-next{
+            color: ghostwhite;
+        }
+        .swiper-button-prev{
+            color: ghostwhite;
+        }
+        .gif {
+            padding-top: 180px;
+            width: 185px;
+            height: auto;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            font-size: 18px;
+            letter-spacing: -1.4px;
+        }
+        .name {
+            display: flex;
+            justify-content: center;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            font-size: 28px;
+            letter-spacing: -1.4px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .normal{
+            font-family: 'DM Sans', sans-serif;
+            font-weight;
+            font-size: 48px;
+            letter-spacing: -1.2px;
+            list-style-type: none;
+        }
+        .description {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            font-size: 18px;
+            letter-spacing: -0.69px;
+        }
+        .navbar {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            letter-spacing: -1.8px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 50px;
+        }
+        .navbar a:hover {
+            text-decoration: underline overline;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-bottom: 40px;
+            /*border-bottom: 3px solid #000000;*/
+        }
+        .name a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .name a:hover {
+            text-decoration: underline overline;
+        }
+        .header a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .title{
+            font: Georgia;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    </style>
+
+<! -- header -->
+
+    <div class="header">
+        <span class="normal">
+            <a href="/">
+                ethan miller
+            </a>
+        </span>
+        <div class="navbar">
+            <a href="/about/">about</a>
+            <a href="/projects/">projects</a>
+            <a href="/ethanmiller_csresume.pdf" download>resume</a>
+        </div>
+    </div>
+</div>
+
+<! -- header -->
+
+<div class="content-container">
+    <div class="name">
+        <a href="https://lightbulbgamesofficial.itch.io/youre-out">You're Out!</a>
+    </div>
+    <div class="content">
+        December 2024 &nbsp  &#151 &nbsp January 2025<br>
+    </div>
+</div>
+<div class ="content-container2">
+    <div class="description">
+        After several complaints from tenants and upper management, you get a phone 
+        call from the board; You're out. Naturally, you get mad. That's when you decide to wreak havoc and kick out every last tenant in the building.
+        Of course, no one likes that, and people are calling the cops on you, so be fast
+        and finish the work day! There's a single mother of two out there to evict!
+        This game was made in 1 week for the Beginner's Jam Winter 2024, placing 3rd.
+        Play as an evil Landlord in this parody typing game, and evict as many
+        tenants from your apartment as possible. This game was made using the Godot engine for scripting, Aseprite for 2D modeling, Blender and Crocotile for 3D modeling, and Logic for sounds. Click 'You're Out!' to see the itch.io page and play. 
+    </div>
+<div class ="image-container">
+
+    <div class="swiper">
+
+    <div class="swiper-wrapper">
+
+    <div class="swiper-slide"><img src="/projects/youre_out/1.png"></div>
+    <div class="swiper-slide"><img src="/projects/youre_out/2.png"></div>
+    <div class="swiper-slide"><img src="/projects/youre_out/3.png"></div>
+    <div class="swiper-slide"><img src="/projects/youre_out/4.png"></div>
+    <div class="swiper-slide"><img src="/projects/youre_out/5.png"></div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+  });
+</script>
+</div>
+</html>

@@ -1,0 +1,214 @@
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<div>
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            opacity: 0;
+            animation: fadeIn 0.75s 0.25s forwards;    
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .content-container {
+            display: flex;
+            justify-content: center;
+            width: 600px;
+            padding-top: 60px;
+            margin: auto;
+            flex-direction: column;
+        }
+        .content-container2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 60px;
+            width: 600px;
+            gap: 14px;
+            margin: auto;
+
+        }
+        .content-container2 a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .image-container {
+            width: 600px;
+            margin: 0;
+            padding-top: 40px;
+            padding-bottom: 100px;
+            box-sizing: border-box;
+
+        }
+        .swiper{
+            width: 100%;
+            height: fit-content;
+        }
+        .swiper-slide img{
+            width: 100%;
+
+        }
+        .swiper-button-next{
+            color: ghostwhite;
+        }
+        .swiper-button-prev{
+            color: ghostwhite;
+        }
+        .gif {
+            padding-top: 180px;
+            width: 185px;
+            height: auto;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            font-size: 18px;
+            letter-spacing: -1.4px;
+        }
+        .name {
+            display: flex;
+            justify-content: center;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            font-size: 28px;
+            letter-spacing: -1.4px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .normal{
+            font-family: 'DM Sans', sans-serif;
+            font-weight;
+            font-size: 48px;
+            letter-spacing: -1.2px;
+            list-style-type: none;
+        }
+        .description {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            font-size: 18px;
+            letter-spacing: -0.69px;
+        }
+        .description a:hover{
+            text-decoration: underline overline;
+        }
+        .navbar {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            letter-spacing: -1.8px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 50px;
+        }
+        .navbar a:hover {
+            text-decoration: underline overline;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-bottom: 40px;
+            /*border-bottom: 3px solid #000000;*/
+        }
+        .name a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .name a:hover {
+            text-decoration: underline overline;
+        }
+        .header a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .title{
+            font: Georgia;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    </style>
+
+<! -- header -->
+
+    <div class="header">
+        <span class="normal">
+            <a href="/">
+                ethan miller
+            </a>
+        </span>
+        <div class="navbar">
+            <a href="/about/">about</a>
+            <a href="/projects/">projects</a>
+            <a href="/ethanmiller_csresume.pdf" download>resume</a>
+        </div>
+    </div>
+</div>
+
+<! -- header -->
+
+<div class="content-container">
+    <div class="name">
+        <a href="/projects/dok/game_design_doc_dok.pdf">Dread of Knight</a>
+    </div>
+    <div class="content">
+        November 2023 &nbsp  &#151 &nbsp December 2023<br>
+    </div>
+</div>
+<div class ="content-container2">
+    <div class="description">
+        Trapped in a decrepit castle surrounded by vast woods, a knight searches for an escape&mdash;only to find every exit locked. As knights pass in the seemingly empty halls, strange
+        dreams begin to haunt him: visions of life as a distant king. What he doesn't know is that,
+        far away, the king dreams of being the knight. This game was made in 2 weeks using the Unity engine,
+        C# for scripting, Aseprite for modeling, and FL Studio for sounds.
+        Click on the title to check out the game design document. 
+    </div>
+<div class ="image-container">
+
+    <div class="swiper">
+
+    <div class="swiper-wrapper">
+
+    <div class="swiper-slide"><img src="/projects/dok/1.png"></div>
+    <div class="swiper-slide"><img src="/projects/dok/2.png"></div>
+    <div class="swiper-slide"><img src="/projects/dok/3.png"></div>
+    <div class="swiper-slide"><img src="/projects/dok/4.png"></div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+  });
+</script>
+</div>
+</html>
