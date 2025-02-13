@@ -6,13 +6,14 @@
 </head>
 <div>
     <style>
+        html {
+            background: black;
+        }
         body {
             font-family: 'DM Sans', sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            opacity: 0;
-            animation: fadeIn 0.75s 0.25s forwards;    
+            height: 100vh; 
         }
         @keyframes fadeIn {
             to {
@@ -30,6 +31,8 @@
             font-size: 3.2px;
             color: gray;
             padding-top: 10px;
+            opacity: 0;
+            animation: fadeIn 0.75s 0.25s forwards;
         }
         .content-container {
             display: flex;
@@ -43,6 +46,18 @@
             width: 185px;
             height: auto;
         }
+        .footer {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            letter-spacing: -1px;
+            list-style-type: none;
+            color: ghostwhite;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 1rem;
+        }
         .content {
             display: flex;
             flex-direction: column;
@@ -51,14 +66,31 @@
             text-align: left;
             font-size: 30px;
             letter-spacing: -1.4px;
+            color: whitesmoke;
+            opacity: 0;
+            animation: fadeIn 0.75s 0.25s forwards; 
         }
+
         .normal{
             font-family: 'DM Sans', sans-serif;
-            font-weight;
+            font-weight: 400;
             font-size: 48px;
-            letter-spacing: -1.2px;
+            letter-spacing: -2px;
             list-style-type: none;
+            color: whitesmoke;
         }
+        .normal a {
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+            padding: 2px 5px;
+        }
+        .normal a:hover {
+            animation: text-glow-blue 1.5s ease-in-out infinite;
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+
         .navbar {
             font-family: 'DM Sans', sans-serif;
             font-size: 24px;
@@ -68,119 +100,162 @@
             padding: 0;
             display: flex;
             gap: 50px;
+            color: whitesmoke;
         }
+
+        .navbar a {
+            position: relative;
+            transition: all .3s ease-in-out;
+            text-decoration: none;
+            padding: 2px 5px;
+        }
+
+        @keyframes text-glow {
+            0% {
+                text-shadow: 
+                    0 0 8px rgba(237, 58, 150, 0.9),
+                    0 0 15px rgba(223, 89, 132, 0.8);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 12px rgba(237, 58, 150, 1),
+                    0 0 25px rgba(193, 50, 82, 0.9),
+                    0 0 35px rgba(156, 0, 24, 0.6);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 8px rgba(237, 58, 150, 0.9),
+                    0 0 15px rgba(223, 89, 132, 0.8);
+            }
+        }
+
+        @keyframes text-glow-blue {
+            0% { 
+                text-shadow: 
+                    0 0 10px rgba(4, 217, 255, 0.9),
+                    0 0 20px rgba(4, 217, 255, 0.9),
+                    0 0 40px rgba(4, 217, 255, 0.6);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 15px rgba(4, 217, 255, 1),
+                    0 0 30px rgba(4, 217, 255, 1),
+                    0 0 60px rgba(4, 217, 255, 0.8);
+                filter: blur(0.8px);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 10px rgba(4, 217, 255, 0.9),
+                    0 0 20px rgba(4, 217, 255, 0.9),
+                    0 0 40px rgba(4, 217, 255, 0.6);
+                filter: blur(0.3px);
+            }
+        }
+
         .navbar a:hover {
-            text-decoration: underline overline;
+            animation: text-glow 1.5s ease-in-out infinite;
+            transform: translateY(-2px);
         }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 40px;
-            padding-left: 80px;
-            padding-right: 80px;
-            padding-bottom: 40px;
+            padding: 40px 80px;
+            text-decoration: none;
         }
         .header a {
-            text-decoration: none;
             color: inherit;
         }
         .title{
-            font: Georgia;
+            font-family: Georgia;
             font-weight: bold;
             font-size: 40px;
         }
+
     </style>
 
-<! -- header -->
-
     <div class="header">
-        <span class="normal">
-            <a href="index.html">
-                ethan miller
+        <div class="normal">
+            <a href="/">
+                ETHAN MILLER
             </a>
-        </span>
+        </div>
         <div class="navbar">
             <a href="/about/">about</a>
             <a href="/projects/">projects</a>
-            <a href="ethanmiller_csresume.pdf" download>resume</a>
+            <a href="/ethanmiller_csresume.pdf" download>resume</a>
         </div>
     </div>
-</div>
 
-<! -- header -->
-
-
-<div class="content-container">
-    <div class="content">
-        hello. i'm ethan:<br>
-        coder, musician,<br>
-        game developer, <br>
-        cinephile, gamer, <br>
-        and storyteller.
+    <div class="content-container">
+        <div class="content">
+            hello. i'm ethan:<br>
+            coder, musician,<br>
+            game developer, <br>
+            cinephile, gamer, <br>
+            and storyteller.
+        </div>
+        
+        <pre id="ascii-box"></pre>
     </div>
-    
-<pre id="ascii-box"></pre>
+    <footer>
+        <div class="footer">
+            &#128679;this website is a work in progress&#128679;
+        </div>
+    </footer>
 
-<script>
-fetch("ascii/frame1.txt")
-.then(response => response.text())
-.then(text => {
-    const target = text.split('');
-    const display = document.getElementById("ascii-box");
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
-    const DURATION = 10000; // 10 seconds
-    const FRAME_RATE = 50; // 50ms = 20fps
+    <script>
+        fetch("ascii/frame1.txt")
+        .then(response => response.text())
+        .then(text => {
+            const target = text.split('');
+            const display = document.getElementById("ascii-box");
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+            const DURATION = 10000;
+            const FRAME_RATE = 50;
 
-    // Precompute animation for each character
-    const sequences = target.map(c => {
-        if (c === '\n') {
-            // Keep newlines static immediately
-            return Array(Math.ceil(DURATION/FRAME_RATE)).fill('\n');
-        }
+            const sequences = target.map(c => {
+                if (c === '\n') {
+                    return Array(Math.ceil(DURATION/FRAME_RATE)).fill('\n');
+                }
 
-        // Generate random lock time between 2-9.5 seconds
-        const lockTime = 2000 + Math.random() * 7500;
-        const lockFrame = Math.floor(lockTime / FRAME_RATE);
-        const totalFrames = Math.ceil(DURATION / FRAME_RATE);
-        
-        // Build animation sequence
-        const steps = [];
-        for (let i = 0; i < totalFrames; i++) {
-            steps.push(i < lockFrame ? 
-                chars[Math.floor(Math.random() * chars.length)] :
-                c
-            );
-        }
-        return steps;
-    });
+                const lockTime = 2000 + Math.random() * 7500;
+                const lockFrame = Math.floor(lockTime / FRAME_RATE);
+                const totalFrames = Math.ceil(DURATION / FRAME_RATE);
+                
+                const steps = [];
+                for (let i = 0; i < totalFrames; i++) {
+                    steps.push(i < lockFrame ? 
+                        chars[Math.floor(Math.random() * chars.length)] :
+                        c
+                    );
+                }
+                return steps;
+            });
 
-    let startTime = Date.now();
-    
-    const animate = () => {
-        const elapsed = Date.now() - startTime;
-        const frameIndex = Math.floor(elapsed / FRAME_RATE);
-        
-        if (frameIndex >= sequences[0].length) {
-            display.textContent = target.join('');
-            return;
-        }
+            let startTime = Date.now();
+            
+            const animate = () => {
+                const elapsed = Date.now() - startTime;
+                const frameIndex = Math.floor(elapsed / FRAME_RATE);
+                
+                if (frameIndex >= sequences[0].length) {
+                    display.textContent = target.join('');
+                    return;
+                }
 
-        let displayText = sequences.map(seq => {
-            return seq[Math.min(frameIndex, seq.length - 1)];
-        }).join('');
+                let displayText = sequences.map(seq => {
+                    return seq[Math.min(frameIndex, seq.length - 1)];
+                }).join('');
 
-        display.textContent = displayText;
-        requestAnimationFrame(animate);
-    };
-    
-    // Initial empty frame to trigger animation
-    display.textContent = target.map(c => c === '\n' ? '\n' : ' ').join('');
-    setTimeout(() => requestAnimationFrame(animate), 50);
-});
-
-
-</script>
-
+                display.textContent = displayText;
+                requestAnimationFrame(animate);
+            };
+            
+            display.textContent = target.map(c => c === '\n' ? '\n' : ' ').join('');
+            setTimeout(() => requestAnimationFrame(animate), 50);
+        });
+    </script>
 </div>
 </html>
