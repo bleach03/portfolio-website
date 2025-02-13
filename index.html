@@ -123,47 +123,63 @@
 <pre id="ascii-box"></pre>
 
 <script>
-    fetch("ascii/frame1.txt")
-        .then(response => response.text())
-        .then(text => {
-            let correctText = text.split('');
-            let displayText = Array(correctText.length).fill(' ');
-            let index = 0; 
+fetch("ascii/frame1.txt")
+.then(response => response.text())
+.then(text => {
+    const target = text.split('');
+    const display = document.getElementById("ascii-box");
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+    const DURATION = 10000; // 10 seconds
+    const FRAME_RATE = 50; // 50ms = 20fps
 
-            let interval;
+    // Precompute animation for each character
+    const sequences = target.map(c => {
+        if (c === '\n') {
+            // Keep newlines static immediately
+            return Array(Math.ceil(DURATION/FRAME_RATE)).fill('\n');
+        }
 
-            function cycleCharacter() {
-                if (index >= correctText.length) {
-                    clearInterval(interval);
-                    return;
-                }
+        // Generate random lock time between 2-9.5 seconds
+        const lockTime = 2000 + Math.random() * 7500;
+        const lockFrame = Math.floor(lockTime / FRAME_RATE);
+        const totalFrames = Math.ceil(DURATION / FRAME_RATE);
+        
+        // Build animation sequence
+        const steps = [];
+        for (let i = 0; i < totalFrames; i++) {
+            steps.push(i < lockFrame ? 
+                chars[Math.floor(Math.random() * chars.length)] :
+                c
+            );
+        }
+        return steps;
+    });
 
-                let attempts = 0;
-                let currentCharacter = displayText[index];
-                while (currentCharacter !== correctText[index] && attempts < 5) {
-                    displayText[index] = getRandomCharacter();
-                    document.getElementById("ascii-box").textContent = displayText.join('');
-                    attempts++;
-                    currentCharacter = displayText[index];
-                }
+    let startTime = Date.now();
+    
+    const animate = () => {
+        const elapsed = Date.now() - startTime;
+        const frameIndex = Math.floor(elapsed / FRAME_RATE);
+        
+        if (frameIndex >= sequences[0].length) {
+            display.textContent = target.join('');
+            return;
+        }
 
-                if (currentCharacter !== correctText[index]) {
-                    displayText[index] = correctText[index];
-                    document.getElementById("ascii-box").textContent = displayText.join('');
-                }
+        let displayText = sequences.map(seq => {
+            return seq[Math.min(frameIndex, seq.length - 1)];
+        }).join('');
 
-                index++;
-            }
+        display.textContent = displayText;
+        requestAnimationFrame(animate);
+    };
+    
+    // Initial empty frame to trigger animation
+    display.textContent = target.map(c => c === '\n' ? '\n' : ' ').join('');
+    setTimeout(() => requestAnimationFrame(animate), 50);
+});
 
-            function getRandomCharacter() {
-                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
-                return chars[Math.floor(Math.random() * chars.length)];
-            }
 
-            interval = setInterval(cycleCharacter, 100);
-            interval = setInterval(cycleCharacter, .1);
-        })
-        .catch(error => console.error("Couldn't load:", error));
 </script>
 
 </div>
