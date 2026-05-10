@@ -45,9 +45,9 @@ serve it.`,
   {
     slug: 'screenwriting',
     name: 'screenwriting',
-    desc: 'vertical drama scripts. 10m+ views.',
+    desc: 'vertical drama writer. 30m+ views.',
     year: '2025',
-    body: `over 10m views on scripts i've written for vertical drama
+    body: `over 30m views on scripts i've written for vertical drama
 platforms — reelshort, dramabox, and microco.`,
   },
   {

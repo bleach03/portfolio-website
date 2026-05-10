@@ -7,10 +7,10 @@ import {
   useState,
   type FormEvent,
   type KeyboardEvent,
-  type PointerEvent as RPointerEvent,
   type ReactNode,
 } from 'react';
 import { PROJECTS } from '../data/projects';
+import { useDraggable } from './useDraggable';
 
 /**
  * Parse `[label](url)` inline markdown links inside a string and return
@@ -168,23 +168,17 @@ const INTRO: Entry[] = [
   { kind: 'out', text: 'ethan miller — portfolio.sh' },
   { kind: 'out', text: 'cs + film @ columbia' },
   { kind: 'out', text: 'type `help` for a list of commands.' },
+  { kind: 'out', text: 'not into typing? click `simple` (top-left).' },
 ];
 
 export function Terminal() {
   const [history, setHistory] = useState<Entry[]>(INTRO);
   const [value, setValue] = useState('');
   const [recallIdx, setRecallIdx] = useState<number | null>(null);
-  const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [dragging, setDragging] = useState(false);
   const [cwd, setCwd] = useState<string>('/');
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef<{
-    startX: number;
-    startY: number;
-    baseX: number;
-    baseY: number;
-  } | null>(null);
+  const { pos, dragging, handleProps } = useDraggable();
 
   // Past commands for ↑/↓ recall
   const cmds = history.filter(h => h.kind === 'cmd').map(h => h.text);
@@ -351,36 +345,6 @@ export function Terminal() {
     setRecallIdx(null);
   };
 
-  // ── Drag handlers (title bar only) ───────────────────────────────
-  const onBarPointerDown = (e: RPointerEvent<HTMLDivElement>) => {
-    // Ignore right-click / non-primary buttons
-    if (e.button !== 0) return;
-    e.preventDefault();
-    e.currentTarget.setPointerCapture(e.pointerId);
-    dragRef.current = {
-      startX: e.clientX,
-      startY: e.clientY,
-      baseX: pos.x,
-      baseY: pos.y,
-    };
-    setDragging(true);
-  };
-
-  const onBarPointerMove = (e: RPointerEvent<HTMLDivElement>) => {
-    if (!dragRef.current) return;
-    const { startX, startY, baseX, baseY } = dragRef.current;
-    setPos({ x: baseX + (e.clientX - startX), y: baseY + (e.clientY - startY) });
-  };
-
-  const endDrag = (e: RPointerEvent<HTMLDivElement>) => {
-    if (!dragRef.current) return;
-    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
-      e.currentTarget.releasePointerCapture(e.pointerId);
-    }
-    dragRef.current = null;
-    setDragging(false);
-  };
-
   const onKey = (e: KeyboardEvent<HTMLInputElement>) => {
     // Tab — autocomplete first match
     if (e.key === 'Tab') {
@@ -430,14 +394,7 @@ export function Terminal() {
         }
       }}
     >
-      <div
-        className="terminal-bar"
-        aria-hidden
-        onPointerDown={onBarPointerDown}
-        onPointerMove={onBarPointerMove}
-        onPointerUp={endDrag}
-        onPointerCancel={endDrag}
-      >
+      <div className="terminal-bar" aria-hidden {...handleProps}>
         <span className="dots">
           <i />
           <i />
