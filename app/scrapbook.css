@@ -391,11 +391,172 @@
 
 .simple-pre { white-space: pre-line; }
 
+/* ── draggable video log ─────────────────────────── */
+
+.video-log {
+  position: fixed;
+  top: 3.8rem;
+  right: 1rem;
+  z-index: 99998;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--mono);
+  font-size: clamp(13px, 1vw, 16px);
+  color: var(--fg);
+  background: rgba(8, 8, 8, 0.94);
+  border: 1px solid var(--line-bright);
+  border-radius: 2px;
+  width: min(780px, 92vw);
+  height: min(78vh, 680px);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.75),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-align: left;
+  overflow: hidden;
+}
+
+.video-log.is-dragging .terminal-bar { cursor: grabbing; }
+.video-log.is-dragging               { user-select: none; }
+
+.video-log-close {
+  margin-left: auto;
+  width: 1.6em;
+  height: 1.6em;
+  font-size: 1em;
+  line-height: 1;
+  color: var(--dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.video-log-close:hover,
+.video-log-close:focus-visible {
+  color: var(--fg);
+  border-color: var(--rule);
+  outline: none;
+}
+
+.video-log-body {
+  padding: 0.85em 1em 1.1em;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+  color: var(--fg-soft);
+  font-size: 0.92em;
+  line-height: 1.55;
+}
+
+.video-log-body::-webkit-scrollbar       { width: 6px; }
+.video-log-body::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+
+.video-log-reel {
+  width: 100%;
+  display: block;
+  background: #000;
+  border: 1px solid var(--rule);
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1.1em;
+}
+
+.video-entry {
+  margin: 0 0 1em;
+}
+
+.video-entry:last-child { margin-bottom: 0; }
+
+.video-entry-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45em;
+  margin-bottom: 0.2em;
+}
+
+.video-entry-title {
+  color: var(--fg);
+  font-weight: 400;
+}
+
+.video-entry-date {
+  color: var(--dim);
+  font-size: 0.85em;
+}
+
+.video-entry-desc {
+  margin: 0;
+  color: var(--fg-soft);
+}
+
+.video-log-note {
+  margin-top: 1.2em;
+  padding: 0.85em 0.95em;
+  border: 1px dashed var(--rule);
+  border-radius: 2px;
+  color: var(--fg-soft);
+  font-size: 0.9em;
+  white-space: pre-line;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* ── "for melius" button (opens the video log) ───── */
+
+.melius-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.45em 0.75em;
+  background: rgba(8, 8, 8, 0.94);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 0.78em;
+  letter-spacing: 0.02em;
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.melius-btn-logo {
+  height: 1.4em;
+  width: auto;
+  display: block;
+  opacity: 0.78;
+  transition: opacity 200ms ease;
+}
+
+.melius-btn:hover .melius-btn-logo,
+.melius-btn:focus-visible .melius-btn-logo,
+.melius-btn.is-open .melius-btn-logo {
+  opacity: 1;
+}
+
+.melius-btn:hover,
+.melius-btn:focus-visible,
+.melius-btn.is-open {
+  color: var(--fg);
+  border-color: var(--accent);
+  background: rgba(20, 18, 14, 0.94);
+  outline: none;
+}
+
 /* ── Mobile ── */
 @media (max-width: 720px) {
   .content { padding: 1rem 1.2rem; }
   html, body { overflow: auto; }
   .view-toggle { top: 0.6rem; left: 0.6rem; }
+  .melius-btn { top: 0.6rem; right: 0.6rem; }
+  .video-log { top: 3.2rem; right: 0.6rem; width: min(360px, 92vw); }
   .hero-center--simple { padding-top: 7vh; }
   .simple { height: 78vh; }
   .simple-body { padding: 0.8em 0.9em 1em; }

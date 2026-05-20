@@ -6,3 +6,5 @@ out/
 !.env.example
 *.log
 .vercel
+tsconfig.tsbuildinfo
+public/*.mp4
