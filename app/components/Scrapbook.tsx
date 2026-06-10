@@ -31,6 +31,7 @@ export function Scrapbook({ tiles, children, wakeInterval = 2200 }: Props) {
   useEffect(() => {
     if (tiles.length === 0) return;
     let lastIndex = -1;
+    let sleepId = 0;
     const tick = () => {
       let idx = Math.floor(Math.random() * tiles.length);
       if (idx === lastIndex && tiles.length > 1) {
@@ -38,7 +39,7 @@ export function Scrapbook({ tiles, children, wakeInterval = 2200 }: Props) {
       }
       lastIndex = idx;
       setAwakeIndex(idx);
-      window.setTimeout(
+      sleepId = window.setTimeout(
         () => setAwakeIndex(prev => (prev === idx ? null : prev)),
         1500,
       );
@@ -49,6 +50,7 @@ export function Scrapbook({ tiles, children, wakeInterval = 2200 }: Props) {
     return () => {
       window.clearTimeout(startId);
       window.clearInterval(id);
+      window.clearTimeout(sleepId);
     };
   }, [tiles.length, wakeInterval]);
 

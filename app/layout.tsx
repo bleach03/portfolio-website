@@ -1,11 +1,29 @@
 import type { Metadata } from 'next';
+import { Geist_Mono } from 'next/font/google';
 import './globals.css';
 import './scrapbook.css';
 import { Filters } from './components/Filters';
 
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-geist-mono',
+});
+
+const DESCRIPTION =
+  'portfolio of ethan miller — coder, musician, game developer.';
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ethanmiller.xyz'),
   title: 'ethan miller',
-  description: 'portfolio of ethan miller — coder, musician, game developer.',
+  description: DESCRIPTION,
+  openGraph: {
+    title: 'ethan miller',
+    description: DESCRIPTION,
+    url: 'https://ethanmiller.xyz',
+    siteName: 'ethan miller',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -14,15 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&display=swap"
-        />
-      </head>
+    <html lang="en" className={geistMono.variable}>
       <body>
         <Filters />
         {children}

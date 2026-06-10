@@ -7,39 +7,11 @@ import {
   useState,
   type FormEvent,
   type KeyboardEvent,
-  type ReactNode,
 } from 'react';
-import { PROJECTS } from '../data/projects';
+import { PROJECTS, type Project } from '../data/projects';
 import { useDraggable } from './useDraggable';
-
-/**
- * Parse `[label](url)` inline markdown links inside a string and return
- * a flat array of strings + anchor nodes. Anything that isn't a link
- * stays as plain text. URLs open in a new tab.
- */
-function renderRich(text: string): ReactNode[] {
-  const out: ReactNode[] = [];
-  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
-  let lastIdx = 0;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > lastIdx) out.push(text.slice(lastIdx, m.index));
-    out.push(
-      <a
-        key={m.index}
-        href={m[2]}
-        target="_blank"
-        rel="noreferrer"
-        className="terminal-link"
-      >
-        {m[1]}
-      </a>,
-    );
-    lastIdx = m.index + m[0].length;
-  }
-  if (lastIdx < text.length) out.push(text.slice(lastIdx));
-  return out.length ? out : [text];
-}
+import { renderRich } from './renderRich';
+import { WindowBar } from './WindowBar';
 
 type Entry =
   | { kind: 'cmd'; text: string; path: string }
@@ -91,20 +63,14 @@ const projectsList = () =>
   PROJECTS.map(p => `  ${p.name.padEnd(16)}${p.desc}`).join('\n') +
   `\n\ntype \`project [name]\` to learn more.`;
 
-const projectDetail = (n: number): Entry => {
-  const p = PROJECTS[n - 1];
-  if (!p) return { kind: 'out', text: `no project at index ${n}` };
-
+const projectDetail = (p: Project): string => {
   const meta = [p.year, p.desc].filter(Boolean).join(' / ');
   const linksLine = p.links?.length
     ? '\n\nlinks:  ' +
       p.links.map(l => `[${l.label}](${l.href})`).join('  ')
     : '';
 
-  return {
-    kind: 'out' as const,
-    text: `${p.name}\n${meta}\n${'─'.repeat(28)}\n${p.body ?? p.desc}${linksLine}`,
-  };
+  return `${p.name}\n${meta}\n${'─'.repeat(28)}\n${p.body ?? p.desc}${linksLine}`;
 };
 
 const ROUTE_HINTS = ['about', 'projects', 'contact', 'help', 'clear'];
@@ -148,9 +114,9 @@ function readFileAt(
   }
   if (cwd === '/projects') {
     const slug = n.replace(/\.txt$/, '');
-    const idx = PROJECTS.findIndex(p => p.slug === slug);
-    if (idx === -1) return null;
-    return { kind: 'file', text: projectDetail(idx + 1).text };
+    const p = PROJECTS.find(p => p.slug === slug);
+    if (!p) return null;
+    return { kind: 'file', text: projectDetail(p) };
   }
   return null;
 }
@@ -313,22 +279,17 @@ export function Terminal() {
     const projMatch = cmd.match(/^project\s+(.+)$/);
     if (projMatch) {
       const arg = projMatch[1].trim().toLowerCase();
-      const asNum = parseInt(arg, 10);
-      let n: number;
-      if (!isNaN(asNum)) {
-        n = asNum;
-      } else {
-        const idx = PROJECTS.findIndex(p => p.slug === arg);
-        if (idx === -1) {
-          append(echo, {
-            kind: 'out',
-            text: `no project named "${arg}". try \`projects\` for the list.`,
-          });
-          return;
-        }
-        n = idx + 1;
+      const p = /^\d+$/.test(arg)
+        ? PROJECTS[parseInt(arg, 10) - 1]
+        : PROJECTS.find(p => p.slug === arg);
+      if (!p) {
+        append(echo, {
+          kind: 'out',
+          text: `no project named "${arg}". try \`projects\` for the list.`,
+        });
+        return;
       }
-      append(echo, projectDetail(n));
+      append(echo, { kind: 'out', text: projectDetail(p) });
       return;
     }
 
@@ -394,14 +355,7 @@ export function Terminal() {
         }
       }}
     >
-      <div className="terminal-bar" aria-hidden {...handleProps}>
-        <span className="dots">
-          <i />
-          <i />
-          <i />
-        </span>
-        <span className="path">~/ethan-miller — sh</span>
-      </div>
+      <WindowBar path="~/ethan-miller — sh" handleProps={handleProps} />
 
       <div className="terminal-body" ref={bodyRef}>
         {history.map((e, i) => {

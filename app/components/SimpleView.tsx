@@ -3,30 +3,8 @@
 import { Fragment, type ReactNode } from 'react';
 import { PROJECTS } from '../data/projects';
 import { useDraggable } from './useDraggable';
-
-function renderRich(text: string): ReactNode[] {
-  const out: ReactNode[] = [];
-  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
-  let lastIdx = 0;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > lastIdx) out.push(text.slice(lastIdx, m.index));
-    out.push(
-      <a
-        key={m.index}
-        href={m[2]}
-        target="_blank"
-        rel="noreferrer"
-        className="terminal-link"
-      >
-        {m[1]}
-      </a>,
-    );
-    lastIdx = m.index + m[0].length;
-  }
-  if (lastIdx < text.length) out.push(text.slice(lastIdx));
-  return out.length ? out : [text];
-}
+import { renderRich } from './renderRich';
+import { WindowBar } from './WindowBar';
 
 function H2({ children }: { children: ReactNode }) {
   return (
@@ -58,14 +36,7 @@ export function SimpleView() {
       className={`simple${dragging ? ' is-dragging' : ''}`}
       style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}
     >
-      <div className="terminal-bar" aria-hidden {...handleProps}>
-        <span className="dots">
-          <i />
-          <i />
-          <i />
-        </span>
-        <span className="path">~/ethan-miller — readme.md</span>
-      </div>
+      <WindowBar path="~/ethan-miller — readme.md" handleProps={handleProps} />
 
       <div className="simple-body">
         <h1 className="simple-h">
