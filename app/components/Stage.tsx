@@ -6,7 +6,6 @@ import { HERO_TILES } from './heroTiles';
 import { Terminal } from './Terminal';
 import { SimpleView } from './SimpleView';
 import { ViewToggle } from './ViewToggle';
-import { VideoLog } from './VideoLog';
 
 export type ViewMode = 'terminal' | 'simple';
 const STORAGE_KEY = 'em_view_mode';
@@ -28,7 +27,6 @@ export function Stage() {
   return (
     <div className="stage">
       <ViewToggle mode={mode} onChange={setMode} />
-      <VideoLog />
       <main className="content">
         <div className="view">
           <Scrapbook tiles={HERO_TILES}>

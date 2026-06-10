@@ -7,4 +7,3 @@ out/
 *.log
 .vercel
 tsconfig.tsbuildinfo
-public/*.mp4
