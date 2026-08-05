@@ -1,6 +1,7 @@
 'use client';
 
 import { Fragment, type ReactNode } from 'react';
+import { EXPERIENCE } from '../data/experience';
 import { PROJECTS } from '../data/projects';
 import { useDraggable } from './useDraggable';
 import { renderRich } from './renderRich';
@@ -47,23 +48,28 @@ export function SimpleView() {
         </h1>
         <p>cs + film @ columbia</p>
 
+        <H2>work experience</H2>
+        <div className="simple-experiences">
+          {EXPERIENCE.map(experience => (
+            <div key={experience.company} className="simple-experience">
+              <p className="simple-experience-heading">
+                <a
+                  href={experience.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="terminal-link"
+                >
+                  {experience.company}
+                </a>
+                <span>{experience.period}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+
         <H2>about</H2>
         <p>working at the intersection of entrepreneurship, ai, and media.</p>
         <p>off the keyboard: electronic music, climbing, film.</p>
-
-        <H2>currently building</H2>
-        <dl className="simple-defs">
-          <dt>opencampus</dt>
-          <dd>
-            agent for college life. lives in iMessage. signs you up for
-            classes, connects you with people, gets things done.
-          </dd>
-          <dt>keyless</dt>
-          <dd>
-            ai video overlay tool for founders making content about their
-            product.
-          </dd>
-        </dl>
 
         <H2>projects</H2>
         {PROJECTS.map(p => (

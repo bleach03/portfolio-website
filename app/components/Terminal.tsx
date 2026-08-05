@@ -22,13 +22,6 @@ const pathDisplay = (cwd: string) => (cwd === '/' ? '~' : `~${cwd}`);
 
 const ABOUT = `working at the intersection of entrepreneurship, ai, and media.
 
-currently building:
-  opencampus  agent for college life. lives in iMessage.
-              signs you up for classes, connects you with
-              people, gets things done.
-  keyless     ai video overlay tool for founders making
-              content about their product.
-
 off the keyboard: electronic music, climbing, film.`;
 
 const CONTACT = `linkedin   [linkedin.com/in/ethanbenjakul](https://linkedin.com/in/ethanbenjakul)
@@ -36,9 +29,7 @@ email      ecm2211 [at] columbia [dot] edu`;
 
 const HELP = `about, projects, project [name], contact, clear, help`;
 
-const TODO_MD = `launch openCampus on eight campuses this fall
-hit 10k mrr w/ keyless
-get into y combinator
+const TODO_MD = `get into y combinator
 graduate (optional)`;
 
 const SECRETS = `you found me! here's a joke:
