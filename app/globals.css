@@ -72,13 +72,3 @@ img {
   display: block;
   max-width: 100%;
 }
-
-button {
-  font: inherit;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  padding: 0;
-  text-align: inherit;
-}

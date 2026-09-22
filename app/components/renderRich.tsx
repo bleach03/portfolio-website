@@ -18,7 +18,7 @@ export function renderRich(text: string): ReactNode[] {
         href={m[2]}
         target="_blank"
         rel="noreferrer"
-        className="terminal-link"
+        className="simple-link"
       >
         {m[1]}
       </a>,

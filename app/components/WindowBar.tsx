@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-/** Mac-style draggable title bar shared by the terminal and simple views. */
+/** Mac-style draggable title bar for the readme window. */
 export function WindowBar({
   path,
   handleProps,
@@ -11,7 +11,7 @@ export function WindowBar({
   handleProps: ComponentPropsWithoutRef<'div'>;
 }) {
   return (
-    <div className="terminal-bar" aria-hidden {...handleProps}>
+    <div className="window-bar" aria-hidden {...handleProps}>
       <span className="dots">
         <i />
         <i />

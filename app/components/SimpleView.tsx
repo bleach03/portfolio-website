@@ -37,7 +37,7 @@ export function SimpleView() {
       className={`simple${dragging ? ' is-dragging' : ''}`}
       style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}
     >
-      <WindowBar path="~/ethan-miller — readme.md" handleProps={handleProps} />
+      <WindowBar path="~/readme.md" handleProps={handleProps} />
 
       <div className="simple-body">
         <h1 className="simple-h">
@@ -53,15 +53,18 @@ export function SimpleView() {
           {EXPERIENCE.map(experience => (
             <div key={experience.company} className="simple-experience">
               <p className="simple-experience-heading">
-                <a
-                  href={experience.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="terminal-link"
-                >
-                  {experience.company}
-                </a>
-                <span>{experience.period}</span>
+                <span className="simple-experience-title">
+                  <a
+                    href={experience.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="simple-link"
+                  >
+                    {experience.company}
+                  </a>
+                  {' — '}{experience.role}
+                </span>
+                <span className="simple-experience-period">{experience.period}</span>
               </p>
             </div>
           ))}
@@ -71,39 +74,43 @@ export function SimpleView() {
         <p>working at the intersection of entrepreneurship, ai, and media.</p>
         <p>off the keyboard: electronic music, climbing, film.</p>
 
-        <H2>projects</H2>
-        {PROJECTS.map(p => (
-          <div key={p.slug} className="simple-project">
-            <H3>
-              {p.name}
-              {p.year ? ` / ${p.year}` : ''}
-            </H3>
-            <p>{p.desc}</p>
-            {p.body && (
-              <p className="simple-pre">
-                {renderRich(p.body).map((node, j) => (
-                  <Fragment key={j}>{node}</Fragment>
-                ))}
-              </p>
-            )}
-            {p.links?.length ? (
-              <p>
-                {p.links.map((l, j) => (
-                  <Fragment key={l.href}>
-                    {j > 0 && '  '}
-                    <a
-                      href={l.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="terminal-link"
-                    >
-                      [{l.label}]
-                    </a>
-                  </Fragment>
-                ))}
-              </p>
-            ) : null}
-          </div>
+        {(['projects', 'creative'] as const).map(category => (
+          <Fragment key={category}>
+            <H2>{category === 'projects' ? 'tech projects' : 'creative projects'}</H2>
+            {PROJECTS.filter(p => p.category === category).map(p => (
+              <div key={p.slug} className="simple-project">
+                <H3>
+                  {p.name}
+                  {p.year ? ` / ${p.year}` : ''}
+                </H3>
+                <p>{p.desc}</p>
+                {p.body && (
+                  <p className="simple-pre">
+                    {renderRich(p.body).map((node, j) => (
+                      <Fragment key={j}>{node}</Fragment>
+                    ))}
+                  </p>
+                )}
+                {p.links?.length ? (
+                  <p>
+                    {p.links.map((l, j) => (
+                      <Fragment key={l.href}>
+                        {j > 0 && '  '}
+                        <a
+                          href={l.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="simple-link"
+                        >
+                          [{l.label}]
+                        </a>
+                      </Fragment>
+                    ))}
+                  </p>
+                ) : null}
+              </div>
+            ))}
+          </Fragment>
         ))}
 
         <H2>contact</H2>
@@ -114,7 +121,7 @@ export function SimpleView() {
               href="https://linkedin.com/in/ethanbenjakul"
               target="_blank"
               rel="noreferrer"
-              className="terminal-link"
+              className="simple-link"
             >
               linkedin.com/in/ethanbenjakul
             </a>
