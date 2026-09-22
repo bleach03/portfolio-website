@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist_Mono } from 'next/font/google';
 import './globals.css';
+import '@xterm/xterm/css/xterm.css';
 import './scrapbook.css';
 import { Filters } from './components/Filters';
 

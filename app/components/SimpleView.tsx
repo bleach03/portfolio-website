@@ -6,6 +6,7 @@ import { PROJECTS } from '../data/projects';
 import { useDraggable } from './useDraggable';
 import { renderRich } from './renderRich';
 import { WindowBar } from './WindowBar';
+import { ReadmeTerminal } from './ReadmeTerminal';
 
 function H2({ children }: { children: ReactNode }) {
   return (
@@ -39,7 +40,7 @@ export function SimpleView() {
     >
       <WindowBar path="~/readme.md" handleProps={handleProps} />
 
-      <div className="simple-body">
+      <ReadmeTerminal>
         <h1 className="simple-h">
           <span className="simple-hash" aria-hidden>
             #
@@ -129,7 +130,7 @@ export function SimpleView() {
           <dt>email</dt>
           <dd>ecm2211 [at] columbia [dot] edu</dd>
         </dl>
-      </div>
+      </ReadmeTerminal>
     </div>
   );
 }
